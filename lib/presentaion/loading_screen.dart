@@ -31,16 +31,13 @@ class _LoadingScreenState extends State<LoadingScreen> {
     await service.getCurrentLocation();
     print(service.latitude);
     // 좌표를 가지고 날씨 API 콜한다.
-    dynamic weatherJson = await WeatherApiService.getWeatherWithLocation(
+    Map<String, dynamic> weatherJson = await WeatherApiService.getWeatherWithLocation(
         latitude: service.latitude,
         longitude: service.longitude,
     );
 
-    Weather weather = Weather(
-      temperature: weatherJson['main']['temp'],
-      description: weatherJson['weather'][0]['main'],
-      cityName: weatherJson['name']
-    );
+    Weather weather = Weather.fromJson(weatherJson);
+    print(weather);
     Navigator.pushNamed(
       context,
       '/locationscreen',

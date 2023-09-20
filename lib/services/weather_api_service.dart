@@ -7,7 +7,7 @@ class WeatherApiService {
     Uri uri = Uri.https('api.openweathermap.org', '/data/2.5/weather', {
       'lat': latitude.toString(),
       'lon': longitude.toString(),
-      'appid': '',
+      'appid': '5df3f1b99c9227bb6bb15d61c2b5bf9b',
       'units': 'metric',
     });
     http.Response response = await http.get(uri);

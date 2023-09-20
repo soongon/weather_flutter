@@ -1,6 +1,6 @@
 
 class Weather {
-  String temperature;
+  double temperature;
   String description;
   String cityName;
 
@@ -9,6 +9,11 @@ class Weather {
     required this.description,
     required this.cityName,
   });
+
+  Weather.fromJson(Map<String, dynamic> json)
+      : temperature = json['main']['temp'],
+        description = json['weather'][0]['main'],
+        cityName = json['name'];
 
   @override
   String toString() {

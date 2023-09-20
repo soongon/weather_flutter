@@ -1,6 +1,7 @@
 import 'dart:convert';
 
 import 'package:flutter/material.dart';
+import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:http/http.dart' as http;
 import 'package:weather_flutter/services/location_service.dart';
 import 'package:weather_flutter/services/weather_api_service.dart';
@@ -33,6 +34,7 @@ class _LoadingScreenState extends State<LoadingScreen> {
         longitude: service.longitude,
     );
     print(weatherJson);
+    Navigator.pushNamed(context, '/locationscreen');
   }
 
   @override
@@ -40,11 +42,8 @@ class _LoadingScreenState extends State<LoadingScreen> {
     return Scaffold(
       backgroundColor: Colors.black,
       body: Center(
-        child: Text(
-          '그냥 텍스트',
-          style: TextStyle(
-            color: Colors.white,
-          ),
+        child: SpinKitSpinningLines(
+          color: Colors.white,
         ),
       ),
     );
